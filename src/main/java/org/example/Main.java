@@ -139,6 +139,13 @@ public class Main extends AbstractMavenLifecycleParticipant {
 		try {
 			Plugin plugin = XML_MAPPER.readValue(pluginDom.toString(), Plugin.class);
 
+			/*
+			After parsing the XML into a 'Plugin' object, the 'configuration' field is filled with a 'LinkedHashMap' object
+			since it's declared as an 'Object' inside the 'Plugin' class, but later on the build a 'ClassCastException' is thrown
+			because the object is not an instance of 'Xpp3Dom'.
+
+			The code below resolves this problem by finding the configuration as a 'Xpp3Dom' object using the original XML object.
+			*/
 			for (PluginExecution execution : plugin.getExecutions()) {
 
 				Xpp3Dom[] executionsDom = pluginDom.getChild("executions").getChildren("execution");
