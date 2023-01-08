@@ -26,15 +26,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Named("dependency-management") // TODO rename
+@Named("untitled2") // TODO rename
 public class Main extends AbstractMavenLifecycleParticipant {
 
 	private static final Log LOG = new SystemStreamLog();
 	private static final XmlMapper XML_MAPPER = new XmlMapper();
 
-	// TODO make both paths bellow configurable
-	private static final String PLUGINS_XML = ".mvn/plugins.xml";
-	private static final String DEPENDENCY_MANAGEMENT_XML = ".mvn/dependency_management.xml";
+	// TODO rename this property key when a properly package name is set
+	private static final String DOT_MVN_DIR = System.getProperty("org.example.untitled2.mvn.dir", ".mvn");
+	private static final String PLUGINS_XML = DOT_MVN_DIR + "/plugins.xml";
+	private static final String DEPENDENCY_MANAGEMENT_XML = DOT_MVN_DIR + "/dependency_management.xml";
 
 	@Override
 	public void afterProjectsRead(MavenSession session) throws MavenExecutionException {
@@ -75,7 +76,7 @@ public class Main extends AbstractMavenLifecycleParticipant {
 				throw new MavenExecutionException("Failed to read " + DEPENDENCY_MANAGEMENT_XML, e);
 			}
 		} else {
-			LOG.warn("Dependency management file not found");
+			LOG.warn("Dependency management file not found in " + DEPENDENCY_MANAGEMENT_XML);
 			return Collections.emptyList();
 		}
 
@@ -107,7 +108,7 @@ public class Main extends AbstractMavenLifecycleParticipant {
 				throw new MavenExecutionException("Failed to read " + PLUGINS_XML, e);
 			}
 		} else {
-			LOG.warn("Plugin file not found");
+			LOG.warn("Plugin file not found in " + PLUGINS_XML);
 			return Collections.emptyList();
 		}
 
