@@ -1,4 +1,4 @@
-package org.example;
+package com.github.eduhoribe.chunyu;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -26,14 +26,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Named("untitled2") // TODO rename
+@Named("chunyu")
 public class Main extends AbstractMavenLifecycleParticipant {
 
 	private static final Log LOG = new SystemStreamLog();
 	private static final XmlMapper XML_MAPPER = new XmlMapper();
 
 	// TODO rename this property key when a properly package name is set
-	private static final String DOT_MVN_DIR = System.getProperty("org.example.untitled2.mvn.dir", ".mvn");
+	private static final String DOT_MVN_DIR = System.getProperty("com.github.eduhoribe:chunyu.mvn.dir", ".mvn");
 	private static final String PLUGINS_XML = DOT_MVN_DIR + "/plugins.xml";
 	private static final String DEPENDENCY_MANAGEMENT_XML = DOT_MVN_DIR + "/dependency_management.xml";
 
