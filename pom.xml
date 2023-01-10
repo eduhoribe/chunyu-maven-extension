@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.eduhoribe</groupId>
-    <artifactId>chunyu</artifactId>
+    <artifactId>chunyu-maven-extension</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

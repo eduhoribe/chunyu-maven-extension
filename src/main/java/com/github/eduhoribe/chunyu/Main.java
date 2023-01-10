@@ -26,14 +26,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Named("chunyu")
+@Named("chunyu-maven-extension")
 public class Main extends AbstractMavenLifecycleParticipant {
 
 	private static final Log LOG = new SystemStreamLog();
 	private static final XmlMapper XML_MAPPER = new XmlMapper();
 
 	// TODO rename this property key when a properly package name is set
-	private static final String DOT_MVN_DIR = System.getProperty("com.github.eduhoribe:chunyu.mvn.dir", ".mvn");
+	private static final String DOT_MVN_DIR = System.getProperty("com.github.eduhoribe:chunyu-maven-extension.mvn.dir", ".mvn");
 	private static final String PLUGINS_XML = DOT_MVN_DIR + "/plugins.xml";
 	private static final String DEPENDENCY_MANAGEMENT_XML = DOT_MVN_DIR + "/dependency_management.xml";
 
